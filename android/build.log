@@ -1,27 +1,60 @@
-Path for java installation '/usr/lib/jvm/openjdk-21' (Common Linux Locations) does not contain a java executable
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build
 > Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
 > Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
-> Task :gradle-plugin:shared:processResources NO-SOURCE
-> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors
-> Task :gradle-plugin:react-native-gradle-plugin:processResources
-> Task :gradle-plugin:shared:compileKotlin
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
 > Task :gradle-plugin:shared:compileJava NO-SOURCE
+> Task :gradle-plugin:shared:processResources NO-SOURCE
 > Task :gradle-plugin:shared:classes UP-TO-DATE
-> Task :gradle-plugin:shared:jar
-> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin UP-TO-DATE
 > Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
-> Task :gradle-plugin:react-native-gradle-plugin:classes
-> Task :gradle-plugin:react-native-gradle-plugin:jar
+> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:jar UP-TO-DATE
+
+> Configure project :app
+Warning: Python version 3.10 may have fewer packages available. If you experience problems, try switching to version 3.8.
+
+> Configure project :react-native-reanimated
+Android gradle plugin: 8.8.0
+Gradle: 8.10.2
+WARNING: The specified Android SDK Build Tools version (34.0.0) is ignored, as it is below the minimum supported version (35.0.0) for Android Gradle Plugin 8.8.0.
+Android SDK Build Tools 35.0.0 will be used.
+To suppress this warning, remove "buildToolsVersion '34.0.0'" from your build.gradle file, as each version of the Android Gradle Plugin now has a default version of the build tools.
+
+> Task :app:generateAutolinkingPackageList UP-TO-DATE
+> Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+> Task :app:generateCodegenArtifactsFromSchema SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:extractDebugPythonBuildPackages UP-TO-DATE
+
+> Task :app:generateDebugPythonRequirements
+Chaquopy: Installing for arm64-v8a
+Looking in indexes: https://pypi.org/simple, https://chaquo.com/pypi-13.1
+Collecting numpy
+  Using cached https://chaquo.com/pypi-13.1/numpy/numpy-1.26.2-0-cp310-cp310-android_21_arm64_v8a.whl (5.0 MB)
+Collecting scipy
+  Using cached https://chaquo.com/pypi-13.1/scipy/scipy-1.8.1-1-cp310-cp310-android_21_arm64_v8a.whl (20.3 MB)
+ERROR: Package 'scipy' requires a different Python: 3.12.12 not in '>=3.8,<3.11'
+Chaquopy: Exit status 1
+
+> Task :app:generateDebugPythonRequirements FAILED
 
 FAILURE: Build failed with an exception.
 
-* Where:
-Build file '/app/android/app/build.gradle' line: 1
-
 * What went wrong:
-A problem occurred evaluating project ':app'.
-> Failed to apply plugin 'com.android.internal.version-check'.
-   > Minimum supported Gradle version is 8.10.2. Current version is 8.7. If using the gradle wrapper, try editing the distributionUrl in /app/android/gradle/wrapper/gradle-wrapper.properties to gradle-8.10.2-all.zip
+Execution failed for task ':app:generateDebugPythonRequirements'.
+> Process 'command '/app/android/app/build/python/env/debug/bin/python'' finished with non-zero exit value 1
+
+  To view full details in Android Studio:
+  * Click the 'Build: failed' caption to the left of this message.
+  * Then scroll up to see the full output.
 
 * Try:
 > Run with --stacktrace option to get the stack trace.
@@ -29,5 +62,11 @@ A problem occurred evaluating project ':app'.
 > Run with --scan to get full insights.
 > Get more help at https://help.gradle.org.
 
-BUILD FAILED in 57m 43s
-6 actionable tasks: 6 executed
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 34s
+10 actionable tasks: 1 executed, 9 up-to-date
