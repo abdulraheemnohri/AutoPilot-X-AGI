@@ -1,6 +1,14 @@
+import { NativeModules } from 'react-native';
+
 class VoiceService {
-  startListening() {
-    console.log('Voice recognition started');
+  async startListening() {
+    try {
+      const result = await NativeModules.VoiceRecognition.startListening();
+      return result;
+    } catch (error) {
+      console.error('Voice Service Error:', error);
+      return null;
+    }
   }
 }
 export default new VoiceService();
