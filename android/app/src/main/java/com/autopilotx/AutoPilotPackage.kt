@@ -9,7 +9,6 @@ import com.facebook.react.uimanager.ViewManager
 class AutoPilotPackage : ReactPackage {
     override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
         return listOf(
-            PythonRuntimeModule(reactContext),
             TensorFlowLiteModule(reactContext),
             OnnxRuntimeModule(reactContext),
             AccessibilityModule(reactContext),

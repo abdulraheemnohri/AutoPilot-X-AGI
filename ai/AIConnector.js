@@ -37,20 +37,16 @@ class AIConnector {
     Logger.log(`Intent detected: ${intentResult.intent} (${intentResult.confidence})`);
 
     // 2. Decide engine for planning
-    if (intentResult.confidence > 0.8) {
-      Logger.log('Using Python Runtime for complex planning');
-      const plan = await PythonRuntimeBridge.planTask(command);
-      return plan;
-    } else {
-      Logger.log('Low confidence, using ONNX for fallback planning');
-      const fallbackPlan = await OnnxRuntimeBridge.runModel('workflow_planner.onnx', { command });
-      return fallbackPlan;
-    }
+    // Using ONNX for all planning as Python runtime is disabled
+    Logger.log('Using ONNX for planning');
+    const plan = await OnnxRuntimeBridge.runModel('workflow_planner.onnx', { command });
+    return plan;
   }
 
   async analyzeBehavior(data) {
-    Logger.log('Analyzing user behavior pattern');
-    return await PythonRuntimeBridge.execute('learning/behavior_model.py', data);
+    Logger.log('Analyzing user behavior pattern with TFLite');
+    // Fallback to TFLite/ONNX for behavior analysis
+    return await TensorFlowLiteBridge.predict('behavior_model.tflite', data);
   }
 
   async downloadModelFromHuggingFace(url, fileName) {

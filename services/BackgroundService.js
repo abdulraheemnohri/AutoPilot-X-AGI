@@ -1,4 +1,4 @@
-import TriggerManager from '../automation/TriggerManager';
+import TriggerManager from '../automation-engine/TriggerManager';
 import AIConnector from '../ai/AIConnector';
 import Logger from '../utils/Logger';
 
