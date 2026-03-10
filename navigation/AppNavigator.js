@@ -4,13 +4,15 @@ import { createStackNavigator } from '@react-navigation/stack';
 import DrawerNavigator from './DrawerNavigator';
 import AutomationBuilderScreen from '../screens/AutomationBuilderScreen';
 import VoiceCommandScreen from '../screens/VoiceCommandScreen';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Splash">
+        <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Root" component={DrawerNavigator} />
         <Stack.Screen name="AutomationBuilder" component={AutomationBuilderScreen} />
         <Stack.Screen name="VoiceCommand" component={VoiceCommandScreen} />
