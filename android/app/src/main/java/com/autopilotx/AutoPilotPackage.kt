@@ -13,7 +13,10 @@ class AutoPilotPackage : ReactPackage {
             TensorFlowLiteModule(reactContext),
             OnnxRuntimeModule(reactContext),
             AccessibilityModule(reactContext),
-            ModelDownloaderModule(reactContext)
+            ModelDownloaderModule(reactContext),
+            VoiceRecognitionModule(reactContext),
+            ScreenCaptureModule(reactContext),
+            BiometricModule(reactContext)
         )
     }
 

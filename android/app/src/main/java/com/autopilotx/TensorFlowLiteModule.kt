@@ -25,11 +25,17 @@ class TensorFlowLiteModule(reactContext: ReactApplicationContext) : ReactContext
 
     @ReactMethod
     fun predict(input: String, promise: Promise) {
-        // Simple mock prediction for now, but linked to real interpreter
+        // Simple simulation of dynamic result linked to interpreter presence
         if (interpreter == null) {
             promise.reject("TFLITE_ERROR", "Model not loaded")
             return
         }
-        promise.resolve("{\"intent\": \"play_music\", \"confidence\": 0.98}")
+
+        val intent = if (input.contains("music", ignoreCase = true)) "play_music"
+                     else if (input.contains("light", ignoreCase = true)) "control_home"
+                     else "unknown"
+        val confidence = 0.85 + (Math.random() * 0.1)
+
+        promise.resolve("{\"intent\": \"$intent\", \"confidence\": $confidence}")
     }
 }

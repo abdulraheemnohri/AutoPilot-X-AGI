@@ -21,6 +21,14 @@ const SettingsScreen = () => {
         <Text>Auto-Learning Patterns</Text>
         <Switch value={true} />
       </View>
+      <View style={styles.setting}>
+        <Text>Biometric Lock for Automations</Text>
+        <Switch value={false} />
+      </View>
+      <View style={styles.setting}>
+        <Text>Hugging Face API Sync</Text>
+        <Switch value={false} />
+      </View>
     </ScrollView>
   );
 };

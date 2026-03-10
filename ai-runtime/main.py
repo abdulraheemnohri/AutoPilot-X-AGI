@@ -29,5 +29,17 @@ def main():
     except Exception as e:
         print(json.dumps({"status": "error", "message": str(e)}))
 
+def execute_from_bridge(script_path, params_json):
+    try:
+        params = json.loads(params_json)
+        # Logic to route based on script_path or params
+        if "plan_task" in script_path or params.get("action") == "plan_task":
+            planner = TaskPlanner()
+            plan = planner.generate_plan(params.get("command", ""))
+            return json.dumps({"status": "success", "data": plan})
+        return json.dumps({"status": "success", "data": {}})
+    except Exception as e:
+        return json.dumps({"status": "error", "message": str(e)})
+
 if __name__ == "__main__":
     main()

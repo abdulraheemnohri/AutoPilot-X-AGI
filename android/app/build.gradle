@@ -93,6 +93,7 @@ android {
                 install "numpy"
                 install "scipy"
             }
+            srcDirs = ["../../ai-runtime"]
         }
     }
     signingConfigs {
